@@ -1,0 +1,271 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: "Montserrat", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  /* Container */
+  .carousel-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+
+  /* Header */
+  .carousel-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .carousel-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .carousel-header p {
+    font-size: 1rem;
+    color: #666;
+  }
+
+  /* Progress Bar */
+  .progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background-color: #4a90e2;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+  }
+
+  /* Carousel */
+  .carousel {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  /* Navigation Buttons */
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    color: #555;
+    transition: all 0.2s ease;
+  }
+
+  .nav-button:hover {
+    background-color: #f8f8f8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .prev-button {
+    left: -20px;
+  }
+
+  .next-button {
+    right: -20px;
+  }
+
+  /* Carousel Card */
+  .carousel-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    min-height: 400px;
+    margin-bottom: 25px;
+    position: relative;
+  }
+
+  /* Carousel Slides */
+  .carousel-slide {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .carousel-slide.active {
+    display: block;
+    opacity: 1;
+  }
+
+  /* Special Slides (START/FINISH) */
+  .special-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 350px;
+  }
+
+  .special-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #4a90e2;
+    margin-bottom: 15px;
+  }
+  
+  .special-content {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .challenge-instructions {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 30px;
+  }
+  
+  .challenge-instructions h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .challenge-instructions p {
+    color: #666;
+  }
+  
+  /* Regular Slides */
+  .regular-slide {
+    min-height: 350px;
+  }
+  
+  .level-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .level-content {
+    list-style-position: inside;
+    margin-bottom: 25px;
+  }
+  
+  .level-content li {
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  .challenge-area {
+    margin-top: 25px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .challenge-area p {
+    color: #888;
+    font-weight: 500;
+  }
+  
+  /* Dot Navigation */
+  .dot-navigation {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dot.active {
+    background-color: #4a90e2;
+  }
+  
+  .footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .carousel-header h1 {
+      font-size: 1.8rem;
+    }
+    
+    .special-title {
+      font-size: 2.5rem;
+    }
+    
+    .carousel-card {
+      padding: 20px;
+    }
+    
+    .nav-button {
+      width: 35px;
+      height: 35px;
+    }
+    
+    .prev-button {
+      left: -15px;
+    }
+    
+    .next-button {
+      right: -15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .carousel-header h1 {
+      font-size: 1.5rem;
+    }
+    
+    .special-title {
+      font-size: 2rem;
+    }
+    
+    .carousel-card {
+      padding: 15px;
+    }
+    
+    .dot {
+      width: 10px;
+      height: 10px;
+    }
+  }
