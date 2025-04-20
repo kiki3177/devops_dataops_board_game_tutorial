@@ -3,6 +3,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { gameLevels } from '../data/gameLevels';
 import '../components/carousel.css';
 
+
+
+
 const DevSecOpsCarousel = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -95,5 +98,8 @@ const DevSecOpsCarousel = () => {
     </div>
   );
 };
+
+
+
 
 export default DevSecOpsCarousel;
