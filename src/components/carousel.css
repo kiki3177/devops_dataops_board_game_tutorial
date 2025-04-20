@@ -1,0 +1,344 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Montserrat", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container */
+.carousel-container {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+/* Header */
+.carousel-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.carousel-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.carousel-header p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Progress Bar */
+.progress-bar-wrapper {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #6b4fa3;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #6b4fa3;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+/* Navigation Buttons */
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    color: #555;
+    transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+    background-color: #f8f8f8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.prev-button {
+    left: -20px;
+}
+
+.next-button {
+    right: -20px;
+}
+
+/* Carousel Card */
+.carousel-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    min-height: 400px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* Chapter Slide */
+.chapter-slide {
+    display: flex;
+    flex-direction: column;
+    min-height: 350px;
+}
+
+.chapter-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.learning-objectives {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.learning-objectives h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #4a90e2;
+}
+
+.learning-objectives ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.learning-objectives li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.learning-objectives-content {
+    width: 100%;
+}
+
+.learning-objectives-content .markdown-body {
+    padding: 0;
+    background-color: transparent;
+}
+
+.learning-objectives-content .markdown-body ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.learning-objectives-content .markdown-body li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.learning-objectives-content .markdown-body p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Start Button */
+.start-button {
+    background-color: #6b4fa3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 20px;
+}
+
+.start-button:hover {
+    background-color: #4b2e83;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Close Button */
+.close-button {
+    background-color: #f5f5f5;
+    color: #4b2e83;
+    border: 2px solid #6b4fa3;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: flex-end;
+}
+
+.close-button:hover {
+    background-color: #e8e0f0;
+}
+
+/* Markdown Container */
+.markdown-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.markdown-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+}
+
+/* Dot Navigation */
+.dot-navigation {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dot.active {
+    background-color: #4b2e83;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .carousel-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .chapter-title {
+        font-size: 2rem;
+    }
+
+    .carousel-card {
+        padding: 20px;
+    }
+
+    .nav-button {
+        width: 35px;
+        height: 35px;
+    }
+
+    .prev-button {
+        left: -15px;
+    }
+
+    .next-button {
+        right: -15px;
+    }
+
+    .learning-objectives h3 {
+        font-size: 1.3rem;
+    }
+
+    .learning-objectives li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .chapter-title {
+        font-size: 1.8rem;
+    }
+
+    .carousel-card {
+        padding: 15px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .start-button {
+        padding: 10px 30px;
+        font-size: 1rem;
+    }
+}
+
+/* Dashboard Button */
+.dashboard-button {
+    background-color: #f5f5f5;
+    color: #4b2e83;
+    border: 2px solid #6b4fa3;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Questrial', sans-serif;
+    font-weight: 600;
+    position: absolute;
+    left: 0;
+}
+
+.dashboard-button:hover {
+    background-color: #e8e0f0;
+}

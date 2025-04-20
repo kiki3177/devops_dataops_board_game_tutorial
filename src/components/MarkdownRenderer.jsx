@@ -35,26 +35,37 @@ const MarkdownRenderer = ({ markdownUrl }) => {
                 padding: 0,
                 boxSizing: 'border-box',
                 alignItems: 'flex-start',
+                overflow: 'hidden',
             }}
         >
-            {/* Sidebar: 25% */}
+            {/* Sidebar */}
             <aside
                 style={{
-                    width: '25%',
-                    padding: '7rem 1rem 1rem',
+                    width: '20%',
+                    padding: '2rem 2rem 1rem',
                     borderRight: '1px solid #ddd',
                     boxSizing: 'border-box',
+                    position: 'fixed',
+                    marginTop: '14rem',
+                    top: 0,
+                    alignSelf: 'flex-start',
+                    height: '100vh',
+                    overflowY: 'auto',
+                    zIndex: 0,
+                    background: 'white',
                 }}
             >
-                <TableOfContents markdown={content} />
+                <TableOfContents markdown={content}/>
             </aside>
 
-            {/* Main content: 75% */}
+            {/* Main content */}
             <main
                 style={{
-                    width: '75%',
-                    padding: '1.5rem 2rem',
+                    width: '80%',
+                    marginLeft: '37%',
+                    marginRight: '5%',
                     boxSizing: 'border-box',
+                    overflowY: 'auto',
                 }}
             >
                 <div className="markdown-body">

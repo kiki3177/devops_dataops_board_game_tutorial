@@ -5,27 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aad36dfd-2743-49d4-9ae9-141b7772cb73" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/MarkdownRenderer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TableOfContents.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/markdown.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/eslint.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/postcss.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/public/vite.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/src/App.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/src/assets/react.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/src/components/DevSecOpsCarousel.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/src/components/carousel.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/src/data/gameLevels.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/src/main.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/tailwind.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/devsecops-board-game/vite.config.js" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ChapterViewer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LearningObjectiveRenderer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TopicSelection.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/carousel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MarkdownRenderer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MarkdownRenderer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TableOfContents.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TableOfContents.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/markdown.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/markdown.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="JSX File" />
         <option value="CSS File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -70,6 +60,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -103,7 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1745005687303</updated>
       <workItem from="1745005688420" duration="13657000" />
-      <workItem from="1745108439534" duration="3504000" />
+      <workItem from="1745108439534" duration="16024000" />
     </task>
     <servers />
   </component>
