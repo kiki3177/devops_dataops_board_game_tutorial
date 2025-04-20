@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aad36dfd-2743-49d4-9ae9-141b7772cb73" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ChapterViewer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LearningObjectiveRenderer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TopicSelection.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/carousel.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MarkdownRenderer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MarkdownRenderer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TableOfContents.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TableOfContents.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicSelection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicSelection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/markdown.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/markdown.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +59,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
@@ -98,7 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1745005687303</updated>
       <workItem from="1745005688420" duration="13657000" />
-      <workItem from="1745108439534" duration="16024000" />
+      <workItem from="1745108439534" duration="21430000" />
     </task>
     <servers />
   </component>

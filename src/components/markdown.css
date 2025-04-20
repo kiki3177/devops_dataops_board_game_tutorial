@@ -81,9 +81,11 @@ th {
 /* Sidebar styling */
 .toc-container {
     font-family: 'Questrial', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     color: #2d1d1d;
     line-height: 1.6;
+    overflow-y: scroll;
+    max-height: 100vh;
 }
 
 .toc-title {

@@ -1,27 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './markdown.css';
 import { ChevronRight } from 'lucide-react';
 
 export default function TableOfContents({ markdown }) {
     const [openSections, setOpenSections] = useState({});
     const [activeId, setActiveId] = useState(null);
-
-    const lines = markdown.split('\n');
-    const toc = [];
-    let currentH2 = null;
-
-    for (const line of lines) {
-        if (line.startsWith('## ') && !line.startsWith('###')) {
-            const text = line.slice(3).trim();
-            const id = slugify(text);
-            currentH2 = { text, id, children: [] };
-            toc.push(currentH2);
-        } else if (line.startsWith('### ') && currentH2) {
-            const text = line.slice(4).trim();
-            const id = slugify(text);
-            currentH2.children.push({ text, id });
-        }
-    }
 
     function slugify(text) {
         return text
@@ -30,50 +13,64 @@ export default function TableOfContents({ markdown }) {
             .replace(/[^\w\-]+/g, '');
     }
 
+    const toc = useMemo(() => {
+        const lines = markdown.split('\n');
+        const result = [];
+        let currentH2 = null;
+
+        for (const line of lines) {
+            if (line.startsWith('## ') && !line.startsWith('###')) {
+                const text = line.slice(3).trim();
+                const id = slugify(text);
+                currentH2 = { text, id, children: [] };
+                result.push(currentH2);
+            } else if (line.startsWith('### ') && currentH2) {
+                const text = line.slice(4).trim();
+                const id = slugify(text);
+                currentH2.children.push({ text, id });
+            }
+        }
+
+        return result;
+    }, [markdown]);
+
     const toggleSection = (id) => {
         setOpenSections((prev) => ({ ...prev, [id]: !prev[id] }));
     };
 
     useEffect(() => {
-        // Auto-open section when it becomes active
         if (activeId) {
             const currentSection = toc.find(section =>
                 section.id === activeId || section.children.some(child => child.id === activeId)
             );
 
             if (currentSection && currentSection.children.some(child => child.id === activeId)) {
-                setOpenSections(prev => ({ ...prev, [currentSection.id]: true }));
+                setOpenSections(prev => {
+                    if (prev[currentSection.id]) return prev;
+                    return { ...prev, [currentSection.id]: true };
+                });
             }
         }
     }, [activeId, toc]);
 
     useEffect(() => {
-        // Create a new observer with better options for detecting sections
         const observer = new IntersectionObserver(
             (entries) => {
-                // Sort entries by their position in the document to get the topmost visible
                 const visibleEntries = entries
                     .filter((entry) => entry.isIntersecting)
-                    .sort((a, b) => {
-                        const rectA = a.boundingClientRect;
-                        const rectB = b.boundingClientRect;
-                        return rectA.top - rectB.top;
-                    });
+                    .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
 
                 if (visibleEntries.length > 0) {
                     setActiveId(visibleEntries[0].target.id);
                 }
             },
             {
-                // Adjust these values for better section detection
                 rootMargin: '-10% 0px -70% 0px',
                 threshold: 0.1,
             }
         );
 
-        // Wait for the DOM to be fully loaded
         setTimeout(() => {
-            // Observe all headings
             toc.forEach(({ id, children }) => {
                 const h2 = document.getElementById(id);
                 if (h2) observer.observe(h2);
@@ -85,7 +82,7 @@ export default function TableOfContents({ markdown }) {
         }, 500);
 
         return () => observer.disconnect();
-    }, [markdown]);
+    }, [toc]);
 
     return (
         <nav className="toc-container">
