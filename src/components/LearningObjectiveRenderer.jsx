@@ -10,19 +10,54 @@ import './markdown.css';
 
 const LearningObjectiveRenderer = ({ markdownUrl }) => {
     const [content, setContent] = useState('');
+    const [error, setError] = useState(null);
+
 
     useEffect(() => {
+        // Reset content when URL changes
+        setContent('');
+        setError(null);
+
+        // Check if markdownUrl is valid
+        if (!markdownUrl) {
+            setError('Invalid markdown URL');
+            return;
+        }
+
+        console.log(`Fetching content from: ${markdownUrl}`);
+
         fetch(markdownUrl)
-            .then((res) => res.text())
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`Failed to fetch markdown: ${res.status} ${res.statusText}`);
+                }
+                return res.text();
+            })
             .then((raw) => {
+                // Find the base path for relative images
                 const basePath = markdownUrl.substring(0, markdownUrl.lastIndexOf('/'));
+
+                // Fix relative image paths
                 const fixedContent = raw.replace(
                     /!\[(.*?)\]\(\.\/(.*?)\)/g,
                     (_, alt, path) => `![${alt}](${basePath}/${path})`
                 );
+
                 setContent(fixedContent);
+            })
+            .catch((err) => {
+                console.error('Error fetching markdown:', err);
+                setError(`Error loading content: ${err.message}`);
             });
     }, [markdownUrl]);
+
+    if (error) {
+        return <div className="error-message">{error}</div>;
+    }
+
+    if (!content) {
+        return <div>Loading content...</div>;
+    }
 
     return (
         <main

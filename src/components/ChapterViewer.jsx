@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import MarkdownRenderer from './MarkdownRenderer';
 import LearningObjectiveRenderer from './LearningObjectiveRenderer';
@@ -7,10 +7,19 @@ import './carousel.css';
 const ChapterViewer = ({ chapters, topicTitle, onBack }) => {
     const [activeSlide, setActiveSlide] = useState(0);
     const [showMarkdown, setShowMarkdown] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
 
     // Progress bar
     const totalChapters = chapters.length;
     const progress = ((activeSlide + 1) / totalChapters) * 100;
+
+    useEffect(() => {
+        // Reset to first slide whenever chapters change
+        setActiveSlide(0);
+        setShowMarkdown(false);
+        setIsLoading(false);
+    }, [chapters]);
 
     const goToNextSlide = () => {
         setActiveSlide((prev) => (prev === totalChapters - 1 ? 0 : prev + 1));
