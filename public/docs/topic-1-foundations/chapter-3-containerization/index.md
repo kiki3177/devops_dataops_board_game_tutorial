@@ -14,7 +14,7 @@
 
 The standardized packaging of containers, managed by orchestration tools like **Kubernetes**, allows for automation in deploying, managing, scaling, and networking of containers. This brings about a high level of efficiency and scalability for applications, especially in cloud computing environments where resources need to be allocated and managed dynamically.
 
-![Kubernetes Dashboard](.assets/kubernetes-dashboard.png)
+![Kubernetes Dashboard](./assets/kubernetes-dashboard.png)
 Example of Functioning Kubernetes Dashboard - Source: [ikarus](https://ikarus.sg/k8s-dashboard)
 
 Containerization also supports microservices architectures, allowing for the segmentation of parts of a large application into small, independent services that are easier to develop, deploy, and maintain. This approach improves system resilience and scalability. In the cloud, these benefits are enhanced due to the inherent elasticity and resource management capabilities of cloud services. Overall, containerization is a crucial aspect of modern software development and deployment, enabling more efficient use of resources, faster deployment times, and greater consistency across environments.
@@ -40,9 +40,6 @@ Containerization also supports microservices architectures, allowing for the seg
 - Agility - Software developers can use this isolated environment to troubleshoot and change the application code without interfering with the operating system, hardware, and other services. This can shorten software release cycles and work on updates quicker.
 
 
-{: .lab}
-[Lab 1 - Containerizing a React Application](./lab/containerization-lab-1.html){: .btn .btn-purple .btn-fill }
-
 <hr>
 
 ## Artifact vs. Artifactory
@@ -65,11 +62,6 @@ An "artifact" refers to any file or collection of files that are produced as a r
 On the other hand, "Artifactory" is a product developed by JFrog. It functions as a universal repository manager, capable of handling various types of artifacts. Artifactory provides a centralized solution for storing and distributing different types of artifacts, including container images, software packages, binaries, and more. It supports a wide range of package formats. Artifactory also offers integration with various build tools, CI/CD pipelines, and development environments, making it a versatile tool for managing artifacts in a software development process.
 
 So, while an "artifact" is a product of the software development process, "Artifactory" is a tool for managing these products. It's a repository where various artifacts, including those from containerization processes, can be stored, managed, and distributed efficiently
-
-
-{: .lab}
-[Lab 2 - Accessing Corporate Network and AWS ECR](./lab/containerization-lab-2.html){: .btn .btn-purple .btn-fill }
-
 
 
 <hr>

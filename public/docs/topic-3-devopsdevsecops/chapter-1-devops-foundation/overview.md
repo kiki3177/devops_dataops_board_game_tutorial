@@ -1,6 +1,7 @@
 # Chapter 1: DevOps Foundation
 
 This chapter explores the challenges in traditional software development processes and introduces DevOps as a solution for improved collaboration, automation, and delivery efficiency.
+
 ## Learning Objectives
 
 - Understand the communication and deployment challenges caused by separating development and operations.

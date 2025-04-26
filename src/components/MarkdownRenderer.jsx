@@ -68,6 +68,20 @@ const MarkdownRenderer = ({markdownUrl}) => {
                                     remarkPlugins={[remarkGfm, remarkSlug]}
                                     rehypePlugins={[rehypeAutolinkHeadings, rehypeRaw]}
                                     components={{
+                                        // Blockquote styling
+                                        blockquote: ({node, ...props}) => (
+                                            <blockquote
+                                                style={{
+                                                    borderLeft: '4px solid #ccc',
+                                                    paddingLeft: '1em',
+                                                    color: '#666',
+                                                    margin: '1em 0',
+                                                    fontStyle: 'italic',
+                                                }}
+                                                {...props}
+                                            />
+                                        ),
+
                                         // Image styling
                                         img: ({node, ...props}) => (
                                             <img

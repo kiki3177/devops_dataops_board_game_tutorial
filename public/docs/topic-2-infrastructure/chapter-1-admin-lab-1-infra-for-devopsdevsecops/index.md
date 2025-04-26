@@ -8,6 +8,7 @@
 >
 > This setup simulates a real-world corporate environment where administrators are responsible for provisioning secure, scalable infrastructure, and end users like hired engineers or team members can access shared resources for development and deployment tasks.
 
+<hr>
 
 ## Introduction
 
@@ -23,6 +24,7 @@ This guide provides detailed instructions for setting up the necessary infrastru
 *Prices may vary based on Azure region, VM type, or additional usage (e.g., outbound data, diagnostics, backup). Always check the [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/) for the most accurate estimates.
 
 
+<hr>
 
 ## Prerequisites
 
@@ -30,12 +32,12 @@ Before setting up the infrastructure, ensure that you have the following tools i
 
 ### Software Requirements
 
-| Name             | Purpose                                                              | Installation Guide                                                                                                               |
-| ---------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Azure CLI        | To interact with Microsoft Azure Services.                           | [How to install the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)     |
-| Terraform        | To provision Azure Infrastructure consistently and programmatically. | [Install Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
-| Git              | To clone the infrastructure scripts.                                 | [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) |
-| WireGuard Client | To access internal services.                                         | [WireGuard Installation](https://www.wireguard.com/install/)                                      |
+| Name             | Purpose                                                              | Installation Guide                                                                                   |
+| ---------------- | -------------------------------------------------------------------- |------------------------------------------------------------------------------------------------------|
+| Azure CLI        | To interact with Microsoft Azure Services.                           | [How to install the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)        |
+| Terraform        | To provision Azure Infrastructure consistently and programmatically. | [Install Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
+| Git              | To clone the infrastructure scripts.                                 | [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)    |
+| WireGuard Client | To access internal services.                                         | [WireGuard Installation](https://www.wireguard.com/install/)                                         |
 
 ### Other Requirements
 
@@ -57,36 +59,36 @@ Before setting up the infrastructure, ensure that you have the following tools i
 
 2. Log in to Azure:
 
-   ```bash
+```bash
    az login
-   ```
+```
    
 3. Get your Azure subscription ID:
 
-   ```bash
+```bash
    az account show --query id --output tsv
 
    Outputs:
    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-   ```
+```
    
 <hr>
 
-## Setting Up The Infrastructure With Terraform
+## Setting Up Infrastructure With Terraform
 
 With the Azure CLI configured, the next step is to set up the actual lab infrastructure using Terraform. Terraform will allow you to automate the deployment of all required Azure resources.
 
-### Clone The Infrastructure Setup Scripts
+### Clone  Infrastructure Setup Scripts
 
 1. Open your terminal.
 
 2. Clone the lab infrastructure setup repository. This repository contains all the necessary Terraform scripts for various lab topics.
    
-   ```bash
+```bash
    git clone https://github.com/open-devsecops/lab-infra-setup.git
-   ```
+```
 
-### Manually Add your Azure subscription ID:
+### Manually Add your Azure Subscription ID
 
 1. Open the azure folder in your preferred code editor or IDE.
 
@@ -94,87 +96,126 @@ With the Azure CLI configured, the next step is to set up the actual lab infrast
 
 3. Find the line that defines the subscription_id variable, and update it with your own Azure Subscription ID:
    
-    ```hcl
+ ```hcl
     variable "subscription_id" {
-    description = "The Azure subscription ID"
-    type        = string
-    default     = "ADD_YOUR_SUBSCRIPTION_ID" # Replace with your actual subscription ID
+      description = "The Azure subscription ID"
+      type        = string
+      default     = "ADD_YOUR_SUBSCRIPTION_ID" # Replace with your actual subscription ID
     }
-   ```
-   
-4. Save the changes to the **variables.tf** file.
+```
+
+4. Save the changes to the variables.tf file.
 
 ### Initialize Terraform
 
-1. Open your terminal.
+1. Open your terminal and navigate to the directory where you cloned the lab infrastructure setup repository.
+
+```bash
+   cd {path_to_your_cloned_repo}
+```
 
 2. Change into the directory containing the Terraform scripts for DevOps and DevSecOps lab:
 
-   ```bash
-   cd lab-infra-setup/topic-2-devops/azure
-   ```
+```bash
+   cd {path_to_your_cloned_repo}/lab-infra-setup/topic-2-devops/azure
+```
 
 3. Inside the `~/azure` directory, run the following command to initialize Terraform: 
 
-   ```bash
+```bash
    terraform init
-   ```
+```
 
 4. Review the execution plan to see what resources will be created:
 
-   ```bash
+```bash
    terraform plan
-   ```
+```
 
-4. Apply the Terraform configuration to provision the Azure infrastructure:
+5. Apply the Terraform configuration to provision the Azure infrastructure:
    
-   ```bash
+```bash
    terraform apply
-   ```
+```
 
-5. When prompted to `Enter a value:`, enter `yes`.
+6. When prompted to `Enter a value:`, enter `yes`.
 
 
 ### Check Deployment Success
 
 1. Once the deployment is complete, you should see outputs in your terminal similar to the following:
 
-    ```hcl
+ ```hcl
     Apply complete! Resources: 16 added, 0 changed, 0 destroyed.
     
     Outputs:
     
-    SSH = "ssh -i lab_key.pem azureuser@40.78.18.200"
+    SSH = "ssh -i lab_key.pem azureuser@104.45.230.119"
+    acr_login_server = "labacrdevops.azurecr.io"
+    acr_student_token_password = <sensitive>
+    acr_student_token_username = "StudentToken"
     please_note = [
-      "Tool installation could take several minutes to complete.",
-      "Verify completion by entering the following command on the server:",
-      "grep 'Lab Infrastructure Provisioning Complete' /var/log/cloud-init-output.log",
+    "Tool installation could take several minutes to complete.",
+    "Verify completion by entering the following command on the server:",
+    "grep 'Lab Infrastructure Provisioning Complete' /var/log/cloud-init-output.log",
     ]
-    vm_public_ip = "40.78.18.200"
-    ```
+    vm_public_ip = "104.45.230.119"
+ ```
 
 2. You can also verify that everything was created properly by checking in the Azure Portal.
 
    - Go to the [Azure Portal](https://portal.azure.com/) and sign in.
-   - Navigate to the 'All resources' section.
-   ![aws iam page](./assets/azure-all-resources.png)
-   - You should see a list of newly created resources such as VMs, virtual networks, public IPs, etc.
-   ![aws iam page](./assets/azure-resources-checklist.png)
+   - Navigate to the 'All resources', 'Resource groups', and 'Container registries' section.
+   - Under 'All resources', you should see a list of newly created resources such as VMs, virtual networks, public IPs, etc.
+   ![az all resources page](./assets/azure-resources-checklist.png)
+   - Under 'Resource groups', you should see two new resource groups: `lab-infra-devops` and `lab-infra-devsecops`.
+   ![az resource groups page](./assets/azure-resource-groups-checklist.png)
+   - Under 'Container registries', you should see a new container registry named `labacrdevops`.
+   ![acr page](./assets/acr-checklist.png)
+
+
+### Generate and Distribute Student Token
+
+After the infrastructure is successfully deployed, you will need to retrieve the container registry token to distribute to students so they can access the Azure Container Registry.
+
+1. Run the following command to output the student token information.
+
+```bash
+   terraform output acr_student_token_password
+```
+
+2. The output will look similar to this:
+
+```hcl
+   tolist([
+   {
+    "expiry" = "2025-12-31T23:59:59+00:00"
+    "value"  = "xxxxxxxxxx"
+   },
+   ])
+```
+
+3. **NOTE**: 
+   - If you are a lab administrator, record the value field (the actual token string) carefully and store it in a secure location. 
+   - You will need to distribute this token to your students so they can authenticate and pull/push images to the Azure Container Registry (labacrdevops). 
+   - Do not share the token publicly. Only distribute it privately to the intended students.
+
+
 
 <hr>
 
 
 ## Accessing Internal Services
 
-### Use The VPN Config Generator
+### Use the VPN Config
 
-1. Navigate to the VPN Config Generator at `https://{vm_public_ip}`. Replace `{vm_public_ip}` with the actual public IP address output by Terraform.
-   ![vpn-config page](./assets/vpn-config.png)
-2. Download the VPN Configuration file
+1. Navigate to the VPN Config at `https://{vm_public_ip}`. Replace `{vm_public_ip}` with the actual public IP address output by Terraform.
+   ![vpn config wait page](./assets/vpn-config-wait.png)
+2. Wait for about 2–3 minutes for the VPN Config service to fully initialize. After the following page is loaded, download the VPN Configuration file.
+   ![vpn config page](./assets/vpn-config.png)
 3. Import the VPN Configuration file into your WireGuard client.
 4. Activate the VPN connection using WireGuard to securely connect to the internal network.
-5. Access internal services such as `http://dashboard.internal` or `http://jenkins.internal`.
-   ![dashboard page](./assets/dashboard.png)
+   ![vpn connection page](./assets/vpn-connection.png)
 
 <hr>
 
@@ -186,12 +227,11 @@ Once your infrastructure is ready and you have connected to the internal network
    ![jenkins unlock page](./assets/unlock-jenkins.png)
 2. To unlock Jenkins and begin setup, you need the initial admin password. Use the command below to retrieve this.
 
-    ```bash
-    ssh -i ~/lab-infra-setup/topic-2-devops/azure/lab_key.pem azureuser@{vm_public_ip} -f "sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword"
-    ```
+```bash
+   ssh -i {path_to_your_cloned_repo}/lab-infra-setup/topic-2-devops/azure/lab_key.pem azureuser@{vm_public_ip} -f "sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword"
+```
 
-{: .important }
-Make sure you are in the `lab-infra-setup/topic-2-devops/azure` directory where the SSH key is located before you enter the command. 
+   Make sure you are in the `{path_to_your_cloned_repo}/lab-infra-setup/topic-2-devops/azure` directory where the SSH key is located before you enter the command. 
 
 3. Back in your web browser on the Jenkins unlock page, enter the initial admin password you retrieved to unlock 
 
@@ -211,19 +251,17 @@ Make sure you are in the `lab-infra-setup/topic-2-devops/azure` directory where 
 
 ## Setting Up Jenkins
 
-![jenkins main page](./assets/jenkins-main.png)
-
-### Creating Student Account
-
 Finally, let's set up a student account that has the necessary permissions to create and manage pipelines but does not possess full administrative rights.
 
-1. Click on Manage Jenkins from the main menu on the left.
+1. Click on `Manage Jenkins` from the main menu on the left.
 
 2. Access `Security > Users`.
+   ![security users page](./assets/security-users.png)
 
 3. Click on Create User to set up a new account.
 
 4. Return to Manage Jenkins and select `Security > Security`.
+   ![security security page](./assets/security-security.png)
 
 5. Scroll to the Authorization section.
 
@@ -235,36 +273,49 @@ Finally, let's set up a student account that has the necessary permissions to cr
 
 9. Configure the permissions for the student account as follows and click on "Save" to apply the changes.
 
-![jenkins auth settings for student account](./assets/jenkins-auth.png)
+   ![jenkins auth settings for student account](./assets/jenkins-auth.png)
 
 
 
 <hr>
 
 
-## Tear Down Infrastructure After Use
+## Tear Down Infrastructure After Use (Lab 2 & 3)
+
+To avoid unnecessary charges, it is important to tear down the infrastructure once you have completed the lab.
 
 ### Destroy Resources Using Terraform
 
 1. Open your terminal.
 
 2. Navigate to the same directory where you applied your Terraform configuration:
-    ```bash
-    cd lab-infra-setup/topic-2-devops/azure
-    ```
+
+```bash
+   cd {path_to_your_cloned_repo}/lab-infra-setup/topic-2-devops/azure
+```
 
 3. Run the following command to destroy all resources created by Terraform:
-    ```bash
-    terraform destroy
-    ```
+
+```bash
+   terraform destroy
+```
    
 4. When prompted to `Enter a value:`, enter `yes` to confirm the destruction of all resources.
 
 ### Check Destruction Completion
 
 1. Once the destruction is complete, you should see outputs in your terminal similar to the following:
-    ```hcl
-    Destroy complete! Resources: 16 destroyed.
-    ```
 
+```hcl
+   Destroy complete! Resources: 16 destroyed.
+```
+
+2. **NOTE**: Some resources that were automatically created (such as certain storage containers, managed identities, or network interfaces) may not be fully destroyed by Terraform. To completely avoid ongoing costs:
+
+   - Go to the [Azure Portal](https://portal.azure.com/) and sign in.
+   - Navigate to the 'All resources' and 'Resource groups' tab. 
+   - Locate the resource group you created for the lab and manually delete the entire resource group. This ensures that all associated resources are cleaned up. 
+   - Then navigate to the 'Container registries' tab and manually delete any container registry that was created during the lab.
+
+   By carefully verifying and manually deleting any leftover resources, you ensure a clean environment and prevent any unexpected Azure charges.
 
