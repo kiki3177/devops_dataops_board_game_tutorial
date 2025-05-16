@@ -1,10 +1,9 @@
 import React from 'react';
-import boeingLogo from '/public/boeinglogo.png';
 import uwLogo from '/public/uwlogo.png';
 import wicLogo from '/public/wiclogo.png';
 import banner from '/public/banner.png';
 
-const Home = ({ onNavigateToOverview }) => {
+const Home = ({onNavigateToOverview}) => {
     return (
         <div style={{
             position: 'relative',
@@ -19,40 +18,377 @@ const Home = ({ onNavigateToOverview }) => {
         }}>
 
 
+            <img
+                src={banner}
+                alt="Banner"
+                style={{
+                    width: '100%',
+                    maxWidth: '600px',
+                    height: 'auto',
+                    marginBottom: '3rem',
+                    marginTop: '0.4rem',
+                }}
+            />
+
             {/* LOGOS */}
             <img
                 src={wicLogo}
                 alt="WIC Logo"
                 style={{
                     position: 'absolute',
-                    top: '2rem',
-                    right: '8rem',
-                    width: '150px',
-                    height: 'auto',
-                }}
-            />
-            <img
-                src={boeingLogo}
-                alt="Boeing Logo"
-                style={{
-                    position: 'absolute',
-                    top: '2.4rem',
-                    right: '0rem',
+                    top: '1.8rem',
+                    right: '3rem',
                     width: '150px',
                     height: 'auto',
                 }}
             />
 
+
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: '100%',
+            }}>
+
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    width: '100%',
+                    marginTop: '2rem'
+                }}>
+                    <div style={{
+                        backgroundColor: 'black',
+                        color: 'white',
+                        fontWeight: '700',
+                        fontSize: '1.25rem',
+                        padding: '0.75rem 2rem',
+                        borderRadius: '12px',
+                        maxWidth: '800px',
+                        width: '100%',
+                        textAlign: 'center',
+                        fontFamily: "'Questrial', sans-serif",
+                        letterSpacing: '0.5px',
+                        boxSizing: 'border-box',
+                        boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+                        textShadow: '0.5px 0.5px 0',
+                    }}>
+                        INTRODUCTION
+                    </div>
+                </div>
+
+
+                <div style={{marginTop: '1.5rem', maxWidth: '65%'}}>
+                    <p style={{
+                        fontSize: '1.125rem',
+                        lineHeight: '1.8',
+                        textAlign: 'left',
+                        color: '#333',
+                    }}>
+                        Welcome to <strong>DevSecOps Lab In A Box</strong>—a hands-on training program co-created by
+                        the University of Washington, Boeing SME & Volunteers, and Women in Cloud to help you build
+                        secure,
+                        AI-powered, cloud-native applications. With the DevSecOps market expected to surpass $23B by
+                        2030, this program fills critical talent gaps where 40% of students lack real-world experience
+                        and 1 in
+                        3 have never heard of DevSecOps. You'll gain access to real labs, subsidized access to Microsoft
+                        certifications, and project-based learning to master Zero Trust, AI safety, and DataOps.
+                        Over 4 months, you'll build in-demand skills and confidence to thrive in the modern tech
+                        economy.<br/><br/>
+                        <strong>Start now — unlock your roadmap, join the lab, and launch your future in secure
+                            innovation.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+                marginTop: '2rem'
+            }}>
+                <button
+                    onClick={onNavigateToOverview}
+                    style={{
+                        backgroundColor: 'black',
+                        color: 'white',
+                        fontWeight: '700',
+                        fontSize: '1.25rem',
+                        padding: '0.75rem 2rem',
+                        borderRadius: '12px',
+                        maxWidth: '800px',
+                        width: '100%',
+                        textAlign: 'center',
+                        fontFamily: "'Questrial', sans-serif",
+                        letterSpacing: '0.5px',
+                        boxSizing: 'border-box',
+                        boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.3)',
+                        border: 'none',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        textDecoration: 'none',
+                        textShadow: '0.5px 0.5px 0',
+                    }}
+                    onMouseOver={e => {
+                        e.currentTarget.style.transform = 'translate(-2px, -2px)';
+                        e.currentTarget.style.backgroundColor = '#333';
+                        e.currentTarget.style.textDecoration = 'underline';
+                    }}
+                    onMouseOut={e => {
+                        e.currentTarget.style.transform = 'translate(0, 0)';
+                        e.currentTarget.style.backgroundColor = 'black';
+                        e.currentTarget.style.textDecoration = 'none';
+                    }}
+                >
+                    → START YOUR JOURNEY ←
+                </button>
+            </div>
+
+            <div style={{
+                marginTop: '3rem',
+                width: '100%',
+                maxWidth: '1000px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                fontFamily: "'Questrial', sans-serif",
+            }}>
+
+                {/* Section Title */}
+                <div style={{
+                    backgroundColor: 'black',
+                    color: 'white',
+                    fontWeight: '700',
+                    fontSize: '1.25rem',
+                    padding: '0.75rem 2rem',
+                    borderRadius: '12px',
+                    maxWidth: '800px',
+                    width: '100%',
+                    textAlign: 'center',
+                    fontFamily: "'Questrial', sans-serif",
+                    letterSpacing: '0.5px',
+                    boxSizing: 'border-box',
+                    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+                    textShadow: '0.5px 0.5px 0',
+                }}>
+                    RESOURCES
+                </div>
+
+                {/* Resource Columns */}
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    width: '75%',
+                    gap: '1.5rem',
+                    flexWrap: 'wrap',
+                    marginTop: '2rem',
+                    marginBottom: '2rem'
+                }}>
+                    {/* Column 1 - Certification */}
+                    <div style={{flex: 1, minWidth: '250px'}}>
+                        <div style={{
+                            fontFamily: "'Questrial', sans-serif",
+                            fontWeight: 'bold',
+                            marginBottom: '0.5rem',
+                            fontSize: '1.125rem',
+                            textShadow: '0.4px 0.4px 0 #333',
+                        }}>WICxDevSecOps Certifications
+                        </div>
+                        <div style={{display: 'flex', alignItems: 'flex-start', gap: '1rem'}}>
+                            <img src="/public/wiclogo2.png" alt="WIC Logo 2" style={{width: '80px'}}/>
+                            <p style={{fontSize: '1rem', lineHeight: '1.6', color: '#333'}}>
+                                Become DevSecOps Professional: Trained, Employed, and Paying It Forward—Literally. Apply
+                                Today!
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Column 2 - Help Resources */}
+                    <div style={{flex: 1, minWidth: '270px'}}>
+                        <div style={{
+                            fontFamily: "'Questrial', sans-serif",
+                            fontWeight: 'bold',
+                            marginBottom: '0.5rem',
+                            marginLeft: '1.1rem',
+                            fontSize: '1.125rem',
+                            textShadow: '0.4px 0.4px 0 #333',
+                        }}>Help Resources
+                        </div>
+                        <ul style={{paddingLeft: '1.2rem', color: '#333', fontSize: '1rem', lineHeight: '1.6'}}>
+                            <li>Watch “How It Works” On YouTube</li>
+                            <li>LinkedIn Article: DevSecOps: The $23 Billion Opportunity You Can’t Afford to Miss</li>
+                            <li>Digital Network – Get Connected</li>
+                        </ul>
+                    </div>
+
+                    {/* Column 3 - Technical Resources */}
+                    <div style={{flex: 1, minWidth: '150px'}}>
+                        <div style={{
+                            fontFamily: "'Questrial', sans-serif",
+                            fontWeight: 'bold',
+                            marginBottom: '0.5rem',
+                            marginLeft: '1rem',
+                            fontSize: '1.125rem',
+                            textShadow: '0.4px 0.4px 0 #333',
+                        }}>Technical Resources
+                        </div>
+                        <ul style={{paddingLeft: '1.2rem', color: '#333', fontSize: '1rem', lineHeight: '1.6'}}>
+                            <li>GITHUB</li>
+                            <li>ReactApp</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+            {/* Project Documentation Link */}
+            <div style={{
+                textAlign: 'left',
+                width: '65%',
+                marginTop: '1rem',
+                fontSize: '1.125rem',
+                color: '#333',
+                fontFamily: "'Questrial', sans-serif",
+            }}>
+                📄 We include our{' '}
+                <a
+                    href="https://docs.google.com/document/d/1410H9-Ie34mL3dqezcMvww_xJS-xqzh7ZH4NO9728W8/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                        color: '#4B2E83',
+                        textDecoration: 'underline',
+                        fontWeight: '600',
+                    }}
+                >
+                    project documentation
+                </a>{' '}
+                here, including market research analysis.
+            </div>
+
+
+            {/* Credits Section */}
+            <div style={{marginTop: '1.5rem', width: '85%', textAlign: 'center' }}>
+                <div style={{ fontWeight: '600', fontSize: '1.25rem', marginBottom: '0.3rem' }}>
+                    🎖️ Core Credits
+                </div>
+                <div style={{
+                    height: '3px',
+                    width: '80%',
+                    backgroundColor: '#4B2E83',
+                    margin: '0 auto 1.5rem auto',
+                    borderRadius: '2px',
+                }}></div>
+
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                    gap: '2rem',
+                    width: '80%',
+                    margin: '0 auto',
+                }}>
+                    {[
+                        {
+                            title: 'WIC Team',
+                            members: ['Chaitra Vedullapalli', 'Andrea Herrera']
+                        },
+                        {
+                            title: 'Boeing Team',
+                            members: ['Geetha Sitaraman', 'Jared Kunz', 'Uzma Khan', 'Jennifer R. Davis']
+                        },
+                        {
+                            title: 'UW Student Team XYKK',
+                            members: ['Xinyi Wang', 'Jiaqi (Kiki) He', 'Xinya Tang', 'Kevin Ko']
+                        }
+                    ].map((group, idx) => (
+                        <div key={idx} style={{ textAlign: 'center' }}>
+                            <div style={{
+                                fontWeight: '600',
+                                marginBottom: '0.5rem',
+                                fontSize: '1.125rem',
+                                textShadow: '0.3px 0.3px 0 #aaa',
+                            }}>{group.title}</div>
+                            <ul style={{
+                                listStyle: 'none',
+                                paddingLeft: 0,
+                                margin: 0,
+                            }}>
+                                {group.members.map((name, i) => (
+                                    <li key={i} style={{ marginBottom: '0.3rem' }}>{name}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Acknowledgments Section */}
+            <div style={{ marginTop: '1.5rem', width: '85%', textAlign: 'center' }}>
+                <div style={{ fontWeight: '600', fontSize: '1.25rem', marginBottom: '0.3rem' }}>
+                    ❤ Special Thanks
+                </div>
+                <div style={{
+                    height: '3px',
+                    width: '80%',
+                    backgroundColor: '#4B2E83',
+                    margin: '0 auto 1.5rem auto',
+                    borderRadius: '2px',
+                }}></div>
+
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                    gap: '2rem',
+                    width: '80%',
+                    margin: '0 auto',
+                }}>
+                    {[
+                        {
+                            title: 'UW 2024 Student Team Info Innovators',
+                            members: ['Sirena Akopyan', 'Bhavya Garlapati', 'Eric Kim', 'Mari Woodworth', 'Brandon Mendoza']
+                        },
+                        {
+                            title: 'UW Faculty',
+                            members: ['Prof. Steven Gustafson', 'Prof. Simon (Wu-Ping) Wang', 'TA Damian Hodel']
+                        }
+                    ].map((group, idx) => (
+                        <div key={idx} style={{ textAlign: 'center' }}>
+                            <div style={{
+                                fontWeight: '600',
+                                marginBottom: '0.5rem',
+                                fontSize: '1.125rem',
+                                textShadow: '0.3px 0.3px 0 #aaa',
+                            }}>{group.title}</div>
+                            <ul style={{
+                                listStyle: 'none',
+                                paddingLeft: 0,
+                                margin: 0,
+                            }}>
+                                {group.members.map((name, i) => (
+                                    <li key={i} style={{ marginBottom: '0.3rem' }}>{name}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+
+
+
+
             <div style={{
                 position: 'absolute',
-                bottom: '7rem',
-                right: '8rem',
-                fontSize: '1rem',
+                bottom: '2rem',
+                right: '2rem',
+                fontSize: '1.125rem',
                 fontWeight: 'bolder',
                 color: '#4B2E83',
                 fontFamily: "'Questrial', sans-serif",
+                textShadow: '0.5px 0.5px 0',
             }}>
-                DESIGNED BY
+                DESIGNED BY TEAM XYKK
             </div>
 
             <img
@@ -60,59 +396,12 @@ const Home = ({ onNavigateToOverview }) => {
                 alt="UW Logo"
                 style={{
                     position: 'absolute',
-                    bottom: '5rem',
+                    bottom: '0rem',
                     right: '2rem',
                     width: '200px',
                     height: 'auto',
                 }}
             />
-
-
-            <img
-                src={banner}
-                alt="DevSecOps Lab In A Box Banner"
-                style={{
-                    width: '80%',
-                    maxWidth: '600px',
-                    height: 'auto'
-                }}
-            />
-
-            <div>
-                <button
-                    onClick={onNavigateToOverview}
-                    style={{
-                        padding: '1rem 2rem',
-                        fontSize: '1.25rem',
-                        fontWeight: '800',
-                        color: 'white',
-                        backgroundColor: '#4B2E83',
-                        border: 'none',
-                        borderRadius: '12px',
-                        boxShadow: '6px 6px 0px #000',
-                        cursor: 'pointer',
-                        transition: 'transform 0.2s ease',
-                        marginTop: '2rem'
-                    }}
-                    onMouseOver={e => e.currentTarget.style.transform = 'translate(-2px, -2px)'}
-                    onMouseOut={e => e.currentTarget.style.transform = 'translate(0, 0)'}
-                >
-                    COURSE OVERVIEW
-                </button>
-            </div>
-
-            <h1 style={{
-                backgroundColor: 'black',
-                color: '#f5f5f5',
-                padding: '1rem 3rem',
-                fontSize: '2rem',
-                fontWeight: '1000',
-                borderRadius: '12px',
-                marginTop: '3rem'
-            }}>
-                INTRODUCTION
-            </h1>
-
         </div>
     );
 };

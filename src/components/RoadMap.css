@@ -1,0 +1,81 @@
+.app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f0f0;
+}
+
+.board-container {
+    position: relative;
+    /*width: 80vw;*/
+    aspect-ratio: 2000 / 1545;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.background-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.board-box {
+    position: absolute;
+    padding: 2px 8px;
+    font-size: clamp(0rem, 1vw, 0.72rem);
+    /*background-color: rgba(255, 255, 255, 0.9);*/
+    /*border: 0.3vw solid #000000;*/
+    z-index: 1;
+    cursor: pointer;
+}
+
+.board-box:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+
+.current-view {
+    margin-top: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.desc {
+    margin: 0;
+    padding: 0;
+    /*list-style: none;*/
+    line-height: 1.2; /* You can try 1.4, 1.6, or even '1.2em' as needed */
+}
+
+.desc li {
+    margin-left: 0.7vw;
+    margin-bottom: 2px; /* optional: controls vertical spacing between lines */
+}
+
+
+/* All positions now based on percentage of board-container (not viewport!) */
+.position-1 { top: 73%; left: 69.1%; width: 13.3%; height: 15.5%}
+.position-2 { top: 73%; left: 56.2%; width: 13.3%; height: 15.5%}
+.position-3  { top: 73%; left: 43.3%; width: 13.3%; height: 15.5%}
+.position-4  { top: 73%; left: 30.4%; width: 13.3%; height: 15.5%}
+.position-5  { top: 73%; left: 17.5%; width: 13.3%; height: 15.5%}
+.position-6  { top: 73%; left: 4.7%; width: 13.3%; height: 15.5%}
+.position-7  { top: 56.4%; left: 4.7%; width: 13.3%; height: 16.9%}
+.position-8  { top: 40.1%; left: 4.7%; width: 13.3%; height: 16.9%}
+.position-9  { top: 24.4%; left: 4.7%; width: 13.3%; height: 16.1%}
+.position-10 { top: 9.3%; left: 4.7%; width: 13.3%; height: 15.5%}
+.position-11 { top: 9.3%; left: 17.6%; width: 13.3%; height: 15.5%}
+.position-12 { top: 9.3%; left: 30.4%; width: 13.3%; height: 15.5%}
+.position-13 { top: 9.3%; left: 43.3%; width: 13.3%; height: 15.5%}
+.position-14 { top: 9.3%; left: 56.2%; width: 13.3%; height: 15.5%}
+.position-15 { top: 9.3%; left: 69.1%; width: 13.3%; height: 15.5%}
+.position-16 { top: 9.3%; left: 82%; width: 13.3%; height: 15.5%}
+.position-17 { top: 24.4%; left: 82%; width: 13.3%; height: 16.3%}
+.position-18 { top: 40.2%; left: 82%; width: 13.3%; height: 15.7%}

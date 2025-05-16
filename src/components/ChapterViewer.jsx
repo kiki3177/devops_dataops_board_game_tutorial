@@ -4,22 +4,30 @@ import MarkdownRenderer from './MarkdownRenderer';
 import LearningObjectiveRenderer from './LearningObjectiveRenderer';
 import './carousel.css';
 
-const ChapterViewer = ({ chapters, topicTitle, onBack }) => {
-    const [activeSlide, setActiveSlide] = useState(0);
+const ChapterViewer = ({ chapters, topicTitle, onBack, activeSlide, setActiveSlide }) => {
+    // const [activeSlide, setActiveSlide] = useState(0);
     const [showMarkdown, setShowMarkdown] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+
+    const [fadeKey, setFadeKey] = useState(0);
+
+    useEffect(() => {
+        setFadeKey(prev => prev + 1);
+    }, [activeSlide]);
+
+
 
 
     // Progress bar
     const totalChapters = chapters.length;
     const progress = ((activeSlide + 1) / totalChapters) * 100;
 
-    useEffect(() => {
-        // Reset to first slide whenever chapters change
-        setActiveSlide(0);
-        setShowMarkdown(false);
-        setIsLoading(false);
-    }, [chapters]);
+    // useEffect(() => {
+    //     // Reset to first slide whenever chapters change
+    //     setActiveSlide(0);
+    //     setShowMarkdown(false);
+    //     setIsLoading(false);
+    // }, [chapters]);
 
     const goToNextSlide = () => {
         setActiveSlide((prev) => (prev === totalChapters - 1 ? 0 : prev + 1));
@@ -51,7 +59,11 @@ const ChapterViewer = ({ chapters, topicTitle, onBack }) => {
                 position: 'relative',
             }}>
                 <button
-                    onClick={onBack}
+                    onClick={() => {
+                        onBack();
+                        setShowMarkdown(false);
+                        setActiveSlide(0);
+                    }}
                     className="dashboard-button"
                 >
                     DASHBOARD
@@ -102,7 +114,7 @@ const ChapterViewer = ({ chapters, topicTitle, onBack }) => {
                         <MarkdownRenderer markdownUrl={chapters[activeSlide].markdownUrl} />
                     </div>
                 ) : (
-                    <div className="carousel-card">
+                    <div key={fadeKey} className="carousel-card fade-in">
                         <div className="chapter-slide active">
                             <div className="learning-objectives">
                                 <div className="learning-objectives-content">
