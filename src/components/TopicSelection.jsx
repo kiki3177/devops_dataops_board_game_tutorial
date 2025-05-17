@@ -1,7 +1,7 @@
 import React from 'react';
-import uwLogo from '/public/uwlogo.png';
-import wicLogo from '/public/wiclogo.png';
-import banner from '/public/banner.png';
+import uwLogo from '/public/img/uwlogo.png';
+import wicLogo from '/public/img/wiclogo.png';
+import banner from '/public/img/banner.png';
 import RoadMap from "./RoadMap.jsx";
 
 const TopicSelection = ({setCurrentView, setActiveSlide, onSelectTopic}) => {

@@ -1,7 +1,7 @@
 import React from 'react';
-import uwLogo from '/public/uwlogo.png';
-import wicLogo from '/public/wiclogo.png';
-import banner from '/public/banner.png';
+import uwLogo from '/public/img/uwlogo.png';
+import wicLogo from '/public/img/wiclogo.png';
+import banner from '/public/img/banner.png';
 
 const Home = ({onNavigateToOverview}) => {
     return (
@@ -55,7 +55,6 @@ const Home = ({onNavigateToOverview}) => {
                     display: 'flex',
                     justifyContent: 'center',
                     width: '100%',
-                    marginTop: '2rem'
                 }}>
                     <div style={{
                         backgroundColor: 'black',
@@ -195,7 +194,7 @@ const Home = ({onNavigateToOverview}) => {
                         }}>WICxDevSecOps Certifications
                         </div>
                         <div style={{display: 'flex', alignItems: 'flex-start', gap: '1rem'}}>
-                            <img src="/public/wiclogo2.png" alt="WIC Logo 2" style={{width: '80px'}}/>
+                            <img src="/public/img/wiclogo2.png" alt="WIC Logo 2" style={{width: '80px'}}/>
                             <p style={{fontSize: '1rem', lineHeight: '1.6', color: '#333'}}>
                                 Become DevSecOps Professional: Trained, Employed, and Paying It Forward—Literally. Apply
                                 Today!
@@ -294,7 +293,7 @@ const Home = ({onNavigateToOverview}) => {
                             members: ['Chaitra Vedullapalli', 'Andrea Herrera']
                         },
                         {
-                            title: 'Boeing Team',
+                            title: 'Boeing WIC Team',
                             members: ['Geetha Sitaraman', 'Jared Kunz', 'Uzma Khan', 'Jennifer R. Davis']
                         },
                         {
@@ -369,6 +368,18 @@ const Home = ({onNavigateToOverview}) => {
                                     <li key={i} style={{ marginBottom: '0.3rem' }}>{name}</li>
                                 ))}
                             </ul>
+                            {group.title === 'UW 2024 Student Team Info Innovators' && (
+                                <div style={{ marginTop: '0.25rem', fontSize: '0.8rem' }}>
+                                    <a
+                                        href="https://open-devsecops.github.io/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ textDecoration: 'underline', color: '#2B6CB0' }}
+                                    >
+                                        View their DevOps & DevSecOps tutorial on Amazon AWS
+                                    </a>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>

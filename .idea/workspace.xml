@@ -5,59 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aad36dfd-2743-49d4-9ae9-141b7772cb73" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/docs/topic-2-devopsdevsecops/chapter-6-lab-2-react-nodejs-deployment/assets/jenkins-login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RoadMap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RoadMap.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/boardgame.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-1-foundations/chapter-3-containerization/overview.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-1-foundations/chapter-3-containerization/overview.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/acr-checklist.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/azure-resource-groups-checklist.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/azure-resources-checklist.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/customize-jenkins.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/jenkins-auth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/security-security.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/security-users.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/unlock-jenkins.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/url-jenkins.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/vpn-config-wait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/vpn-config.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/assets/vpn-connection.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-1-admin-lab-1-infra-for-devopsdevsecops/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-2-admin-lab-2-infra-for-dataops/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-2-infrastructure/chapter-2-admin-lab-2-infra-for-dataops/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-1-devops-foundation/assets/devops-lifecycle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-1-devops-foundation/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-1-devops-foundation/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-2-devsecops-foundation/assets/devsecops-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-2-devsecops-foundation/assets/devsecops-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-2-devsecops-foundation/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-2-devsecops-foundation/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-3-cicd-in-devopsdevsecops/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-3-cicd-in-devopsdevsecops/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-4-webhooks/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-4-webhooks/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-5-lab-2-react-nodejs-deployment/Bonus after dockerization - Exploring the Container Environment.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-5-lab-2-react-nodejs-deployment/assets/token-generate-page.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-5-lab-2-react-nodejs-deployment/assets/vpn-download.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-5-lab-2-react-nodejs-deployment/assets/wireguard-activate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-5-lab-2-react-nodejs-deployment/assets/wireguard-dashboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-5-lab-2-react-nodejs-deployment/containerization-lab-2.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-5-lab-2-react-nodejs-deployment/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-5-lab-2-react-nodejs-deployment/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-6-lab-3-secure-vulnerable-application/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-devopsdevsecops/chapter-6-lab-3-secure-vulnerable-application/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-4-dataops/chapter-1-dataops-prerequisite/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-4-dataops/chapter-1-dataops-prerequisite/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-4-dataops/chapter-2-dataops-foundation/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-4-dataops/chapter-2-dataops-foundation/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-4-dataops/chapter-3-cicd-in-dataops/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docs/topic-4-dataops/chapter-3-cicd-in-dataops/overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ChapterViewer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ChapterViewer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/index-BTqF_cqp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/index-dEeDZGZg.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/banner.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/banner.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/boardgame.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/boeinglogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/boeinglogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-1-dataops-foundation/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-1-dataops-foundation/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-2-cicd-in-dataops/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-2-cicd-in-dataops/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-3-elt-pipeline-walkthrough/assets/media/image11.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-3-elt-pipeline-walkthrough/assets/media/image11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-3-elt-pipeline-walkthrough/assets/media/image5.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-3-elt-pipeline-walkthrough/assets/media/image5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-3-elt-pipeline-walkthrough/assets/media/image8.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-3-elt-pipeline-walkthrough/assets/media/image8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-3-elt-pipeline-walkthrough/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-3-elt-pipeline-walkthrough/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-3-elt-pipeline-walkthrough/overview.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-3-elt-pipeline-walkthrough/overview.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-4-lab-IaC-dataops-pipeline/assets/media/image12.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-4-lab-IaC-dataops-pipeline/assets/media/image12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-4-lab-IaC-dataops-pipeline/assets/media/image16.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-4-lab-IaC-dataops-pipeline/assets/media/image16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-4-lab-IaC-dataops-pipeline/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-4-lab-IaC-dataops-pipeline/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-4-lab-IaC-dataops-pipeline/overview.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-4-lab-IaC-dataops-pipeline/overview.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uwlogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/uwlogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/wiclogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/wiclogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/wiclogo2.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/wiclogo2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RoadMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RoadMap.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TopicSelection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicSelection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,24 +59,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/kiki/Documents/GitHub/devops_dataops_board_game_tutorial/public/docs/topic-2-devopsdevsecops/chapter-6-lab-2-react-nodejs-deployment/assets",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build.executor": "Run",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "/Users/kiki/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/kiki/Documents/GitHub/devops_dataops_board_game_tutorial/public/docs/topic-2-devopsdevsecops/chapter-6-lab-2-react-nodejs-deployment/assets&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/kiki/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/docs/topic-2-devopsdevsecops/chapter-6-lab-2-react-nodejs-deployment/assets" />
@@ -109,12 +84,23 @@
       <recent name="$PROJECT_DIR$/public/docs/topic-3-dataops/chapter-4-lab-infra-for-dataops/assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/public/docs/topic-1-foundations/chapter-3-containerization" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.build">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -127,6 +113,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -160,6 +147,7 @@
       <workItem from="1747174265778" duration="6552000" />
       <workItem from="1747257509841" duration="13232000" />
       <workItem from="1747347186647" duration="22229000" />
+      <workItem from="1747425652449" duration="8529000" />
     </task>
     <servers />
   </component>

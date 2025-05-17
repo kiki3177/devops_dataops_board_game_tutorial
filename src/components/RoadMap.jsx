@@ -1,5 +1,5 @@
 import {useState} from "react";
-import bgImg from '/public/boardgame.png';
+import bgImg from '/public/img/boardgame.png';
 import './RoadMap.css';
 
 

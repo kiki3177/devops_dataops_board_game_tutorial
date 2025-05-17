@@ -2,3 +2,5 @@
 .DS_Store
 /node_modules
 /.idea
+/public/docs/topic-3-dataops/chapter-4-lab-IaC-dataops-pipeline/archived
+/public/docs/topic-3-dataops/chapter-3-elt-pipeline-walkthrough/archived
