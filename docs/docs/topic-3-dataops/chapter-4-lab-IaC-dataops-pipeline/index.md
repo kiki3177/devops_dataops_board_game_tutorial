@@ -127,10 +127,10 @@ You will receive a response like this in the command line:
 
 ```
     {
-      "appId": "************",
-      "displayName": "************",
-      "password": "************",
-      "tenant": "************"
+      "appId": "**************",
+      "displayName": "**************",
+      "password": "**************",
+      "tenant": "**************"
     }
 ```
 
