@@ -1,6 +1,7 @@
 import React from 'react';
 import uwLogo from '/public/img/uwlogo.png';
 import wicLogo from '/public/img/wiclogo.png';
+import wicLogo2 from '/public/img/wiclogo2.png'
 import banner from '/public/img/banner.png';
 
 const Home = ({onNavigateToOverview}) => {
@@ -194,7 +195,7 @@ const Home = ({onNavigateToOverview}) => {
                         }}>WICxDevSecOps Certifications
                         </div>
                         <div style={{display: 'flex', alignItems: 'flex-start', gap: '1rem'}}>
-                            <img src="/public/img/wiclogo2.png" alt="WIC Logo 2" style={{width: '80px'}}/>
+                            <img src={wicLogo2} alt="WIC Logo 2" style={{width: '80px'}}/>
                             <p style={{fontSize: '1rem', lineHeight: '1.6', color: '#333'}}>
                                 Become DevSecOps Professional: Trained, Employed, and Paying It Forward—Literally.
                                 <a href="https://womenincloud.com/devsecops/" target="_blank" rel="noopener noreferrer"
