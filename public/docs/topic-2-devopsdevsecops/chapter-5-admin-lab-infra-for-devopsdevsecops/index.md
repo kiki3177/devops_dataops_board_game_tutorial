@@ -85,26 +85,52 @@ With the Azure CLI configured, the next step is to set up the actual lab infrast
 2. Clone the lab infrastructure setup repository. This repository contains all the necessary Terraform scripts for various lab topics.
    
 ```bash
-   git clone https://github.com/open-devsecops/lab-infra-setup.git
+   git clone https://github.com/open-devsecops/lab-infra-setup-devsecops.git
 ```
 
-### Manually Add your Azure Subscription ID
+### Manually Create Azure Container Registry Name and Add your Azure Subscription ID
 
 1. Open the azure folder in your preferred code editor or IDE.
 
 2. Locate the file named **variables.tf**. This file defines input variables used by the Terraform scripts.
 
-3. Find the line that defines the subscription_id variable, and update it with your own Azure Subscription ID:
-   
- ```hcl
-    variable "subscription_id" {
-      description = "The Azure subscription ID"
-      type        = string
-      default     = "ADD_YOUR_SUBSCRIPTION_ID" # Replace with your actual subscription ID
-    }
+
+3. Creat your Azure Container Registry name. To make sure the ACR name is globally unique across all Azure users, use the following command line:
+
+```bash
+   az acr check-name --name <your_acr_name>
+```
+4. If the output indicates that the name is available (nameAvailable is true), you can proceed to use it in the variables.tf file. If not, choose a different name. Find the line that defines the acr_name variable, and update it with your own Azure Container Registry name.
+
+```hcl
+   {
+   "availableLoginServerName": "labacrdevops2025.azurecr.io",
+   "message": null,
+   "nameAvailable": true,
+   "reason": null
+   }
 ```
 
-4. Save the changes to the variables.tf file.
+```hcl
+   variable "acr_name" {
+   description = "Name of the Azure Container Registry"
+   type        = string
+   default     = "CREATE_YOUR_ACR_NAME" # MUST BE GLOBALLY UNIQUE
+   }
+
+```
+
+5. Find the line that defines the subscription_id variable, and update it with your own Azure Subscription ID:
+   
+```hcl
+   variable "subscription_id" {
+   description = "The Azure subscription ID"
+   type        = string
+   default     = "ADD_YOUR_SUBSCRIPTION_ID" # Replace with your actual subscription ID
+   }
+```
+
+6. Save the changes to the variables.tf file.
 
 ### Initialize Terraform
 
@@ -117,7 +143,7 @@ With the Azure CLI configured, the next step is to set up the actual lab infrast
 2. Change into the directory containing the Terraform scripts for DevOps and DevSecOps lab:
 
 ```bash
-   cd {path_to_your_cloned_repo}/lab-infra-setup/topic-2-devops/azure
+   cd {path_to_your_cloned_repo}/lab-infra-setup-devsecops/topic-2-devops/azure
 ```
 
 3. Inside the `~/azure` directory, run the following command to initialize Terraform: 
@@ -146,20 +172,20 @@ With the Azure CLI configured, the next step is to set up the actual lab infrast
 1. Once the deployment is complete, you should see outputs in your terminal similar to the following:
 
  ```hcl
-    Apply complete! Resources: 16 added, 0 changed, 0 destroyed.
-    
-    Outputs:
-    
-    SSH = "ssh -i lab_key.pem azureuser@104.45.230.119"
-    acr_login_server = "labacrdevops.azurecr.io"
-    acr_student_token_password = <sensitive>
-    acr_student_token_username = "StudentToken"
-    please_note = [
-    "Tool installation could take several minutes to complete.",
-    "Verify completion by entering the following command on the server:",
-    "grep 'Lab Infrastructure Provisioning Complete' /var/log/cloud-init-output.log",
-    ]
-    vm_public_ip = "104.45.230.119"
+   Apply complete! Resources: 21 added, 0 changed, 0 destroyed.
+   
+   Outputs:
+   
+   SSH = "ssh -i lab_key.pem azureuser@13.64.152.136"
+   acr_login_server = "labacrdevops2025.azurecr.io"
+   acr_student_token_password = <sensitive>
+   acr_student_token_username = "StudentToken"
+   please_note = [
+     "Tool installation could take several minutes to complete.",
+     "Verify completion by entering the following command on the server:",
+     "grep 'Lab Infrastructure Provisioning Complete' /var/log/cloud-init-output.log",
+   ]
+   vm_public_ip = "13.64.152.136"
  ```
 
 2. You can also verify that everything was created properly by checking in the Azure Portal.
@@ -168,9 +194,9 @@ With the Azure CLI configured, the next step is to set up the actual lab infrast
    - Navigate to the 'All resources', 'Resource groups', and 'Container registries' section.
    - Under 'All resources', you should see a list of newly created resources such as VMs, virtual networks, public IPs, etc.
    ![az all resources page](./assets/azure-resources-checklist.png)
-   - Under 'Resource groups', you should see two new resource groups: `lab-infra-devops` and `lab-infra-devsecops`.
+   - Under 'Resource groups', you should see two new resource groups: `lab-rg` and `NetworkWatcherRG`.
    ![az resource groups page](./assets/azure-resource-groups-checklist.png)
-   - Under 'Container registries', you should see a new container registry named `labacrdevops`.
+   - Under 'Container registries', you should see a new container registry named `labacrdevops2025`.
    ![acr page](./assets/acr-checklist.png)
 
 
@@ -195,9 +221,9 @@ After the infrastructure is successfully deployed, you will need to retrieve the
    ])
 ```
 
-3. **NOTE**: 
-   - If you are a lab administrator, record the value field (the actual token string) carefully and store it in a secure location. 
-   - You will need to distribute this token to your students so they can authenticate and pull/push images to the Azure Container Registry (labacrdevops). 
+3. **IMPORTANT NOTE**: 
+   - Record the value field (the actual token string) carefully and store it in a secure location. 
+   - If you are a lab administrator, you will need to distribute this token to your students so they can authenticate and pull/push images to the Azure Container Registry (labacrdevops). 
    - Do not share the token publicly. Only distribute it privately to the intended students.
 
 
@@ -225,13 +251,11 @@ Once your infrastructure is ready and you have connected to the internal network
 
 1. Navigate to `http://jenkins.internal` in your web browser.
    ![jenkins unlock page](./assets/unlock-jenkins.png)
-2. To unlock Jenkins and begin setup, you need the initial admin password. Use the command below to retrieve this.
+2. To unlock Jenkins and begin setup, you need the initial admin password. Make sure you are in the `{path_to_your_cloned_repo}/lab-infra-setup-devsecops/topic-2-devops/azure` directory where the SSH key is located. Then use the command below to retrieve this.
 
 ```bash
-   ssh -i {path_to_your_cloned_repo}/lab-infra-setup/topic-2-devops/azure/lab_key.pem azureuser@{vm_public_ip} -f "sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword"
+   ssh -i {path_to_your_cloned_repo}/lab-infra-setup-devsecops/topic-2-devops/azure/lab_key.pem azureuser@{vm_public_ip} -f "sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword"
 ```
-
-   Make sure you are in the `{path_to_your_cloned_repo}/lab-infra-setup/topic-2-devops/azure` directory where the SSH key is located before you enter the command. 
 
 3. Back in your web browser on the Jenkins unlock page, enter the initial admin password you retrieved to unlock 
 
@@ -259,6 +283,7 @@ Finally, let's set up a student account that has the necessary permissions to cr
    ![security users page](./assets/security-users.png)
 
 3. Click on Create User to set up a new account.
+   ![add user page](./assets/jenkins-add-user.png)
 
 4. Return to Manage Jenkins and select `Security > Security`.
    ![security security page](./assets/security-security.png)
@@ -275,8 +300,15 @@ Finally, let's set up a student account that has the necessary permissions to cr
 
    ![jenkins auth settings for student account](./assets/jenkins-auth.png)
 
+10. Return to Manage Jenkins and select `Security > Crendentials`.
+    ![security crendential page](./assets/security-crendential.png)
 
+11. Click `global` in the following picture and add a new credential by clicking on the "Add Credentials" link.
+    ![create crendential page](./assets/create-crendential.png)
+12. Select "Username with password" as the kind of credential.
 
+13. Enter the username (`StudentToken`), password (you saved earlier) and ID (jenkins-acr-scope-map-cred).
+    ![configure crendential page](./assets/configure-crendential.png)
 <hr>
 
 
@@ -291,7 +323,7 @@ To avoid unnecessary charges, it is important to tear down the infrastructure on
 2. Navigate to the same directory where you applied your Terraform configuration:
 
 ```bash
-   cd {path_to_your_cloned_repo}/lab-infra-setup/topic-2-devops/azure
+   cd {path_to_your_cloned_repo}/lab-infra-setup-devsecops/topic-2-devops/azure
 ```
 
 3. Run the following command to destroy all resources created by Terraform:

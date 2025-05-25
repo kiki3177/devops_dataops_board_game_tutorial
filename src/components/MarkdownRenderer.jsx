@@ -5,6 +5,9 @@ import remarkGfm from 'remark-gfm';
 import remarkSlug from 'remark-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeRaw from 'rehype-raw';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import {Button} from 'react-bootstrap';
+import {FaRegClipboard} from 'react-icons/fa';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {prism} from 'react-syntax-highlighter/dist/esm/styles/prism';
 import TableOfContents from './TableOfContents';
@@ -97,18 +100,52 @@ const MarkdownRenderer = ({markdownUrl}) => {
                                         ),
 
                                         // Syntax highlighting
-                                        code({node, inline, className, children, ...props}) {
+                                        code({ node, inline, className, children, ...props }) {
                                             const match = /language-(\w+)/.exec(className || '');
-                                            return !inline && match ? (
-                                                <SyntaxHighlighter
-                                                    style={prism}
-                                                    language={match[1]}
-                                                    PreTag="div"
-                                                    {...props}
-                                                >
-                                                    {String(children).replace(/\n$/, '')}
-                                                </SyntaxHighlighter>
-                                            ) : (
+                                            const codeString = String(children).replace(/\n$/, '');
+
+                                            if (!inline && match) {
+                                                return (
+                                                    <div
+                                                        className="position-relative mb-4"
+                                                        style={{ position: 'relative' }}
+                                                        onMouseEnter={(e) => {
+                                                            const button = e.currentTarget.querySelector('.copy-btn');
+                                                            if (button) button.style.visibility = 'visible';
+                                                        }}
+                                                        onMouseLeave={(e) => {
+                                                            const button = e.currentTarget.querySelector('.copy-btn');
+                                                            if (button) button.style.visibility = 'hidden';
+                                                        }}
+                                                    >
+                                                        <CopyToClipboard text={codeString}>
+                                                            <Button
+                                                                variant="light"
+                                                                size="sm"
+                                                                className="copy-btn position-absolute top-0 end-0 m-2 d-flex align-items-center"
+                                                                style={{ visibility: 'hidden', zIndex: 10 }}
+                                                                onClick={() => {
+                                                                    alert('Copied!');
+                                                                }}
+                                                            >
+                                                                <FaRegClipboard className="me-2" />
+                                                                Copy
+                                                            </Button>
+                                                        </CopyToClipboard>
+
+                                                        <SyntaxHighlighter
+                                                            style={prism}
+                                                            language={match[1]}
+                                                            PreTag="div"
+                                                            {...props}
+                                                        >
+                                                            {codeString}
+                                                        </SyntaxHighlighter>
+                                                    </div>
+                                                );
+                                            }
+
+                                            return (
                                                 <code className={className} {...props}>
                                                     {children}
                                                 </code>

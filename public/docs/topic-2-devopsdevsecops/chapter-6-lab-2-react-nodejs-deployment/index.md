@@ -61,25 +61,49 @@ Below are the skills and knowledge expected to successfully complete the lab exe
 Let's start by forking the reference application repository. This will create a copy that you can modify and use without affecting the original codebase. Cloning will then brings this copy to your local machine.
 
 1. **Fork the Repository:** Navigate to the [reference application](https://github.com/open-devsecops/topic-2-lab-reference-app-azure) and fork the repository to your own GitHub account.
-2. **Clone Your Fork:** Open your terminal and clone the forked repository to your local machine.
+2. **Clone Your Fork:** Open your terminal and clone the reference application repository to your local machine.
 
 ```bash
-    git clone <your-forked-repo-url>
+    git clone {path_to_your_forked_repo}
 ```
 
-### 2. Run the React Application Locally
+### 2. Run the React Application Locally in WebStorm
 
-With the reference application repository cloned, let's run the React app locally to see how it looks and functions on your machine.
+With the reference application repository cloned, follow these steps to run both the frontend and backend locally using WebStorm:
 
-1. **Navigate to the Project Directory:** Move into the project directory in your terminal.
-2. **Install Dependencies:** Run `npm install` to install the required node modules for the project.
-3. **Start the Application:** Enter `npm start` to run the application locally. Your default web browser should automatically open to `http://localhost:3000`, displaying the reference application.
+#### 1. Open the Project in WebStorm
+Launch WebStorm and open the cloned repository directory.
+
+#### 2. Navigate to Backend and Install Dependencies
+Open the terminal in WebStorm and run the following commands to start the backend server:
 
 ```bash
-    cd topic-2-lab-reference-app
+    cd back_end
     npm install
-    npm start
+    node app.js
 ```
+
+#### 3. Navigate to Frontend and Install Dependencies
+
+Open a new terminal tab or split terminal, then run to start the frontend React app:
+
+```bash
+    cd front_end
+    npm install
+    export PORT=8000 && node ./node_modules/.bin/react-scripts start
+```
+
+#### 4. Stop the Frontend and Backend Servers
+
+To stop the servers when you're done working:
+
+- **In the terminal running the frontend:**
+  Press `Ctrl + C`
+
+- **In the terminal running the backend:**
+  Press `Ctrl + C`
+
+This will gracefully stop both applications.
 
 ### 3. (Optional) Customize the React Application!
 
@@ -177,18 +201,18 @@ For the front-end, navigate to the `front_end/` directory and create a file name
 #### Complete Dockerfile for Front-End
 
 ```Dockerfile
-  # Build stage
-  FROM node:21-alpine AS build
-  WORKDIR /app
-  COPY package*.json ./
-  RUN npm install
-  COPY . .
-  RUN npm run build
-  
-  # Runtime stage
-  FROM nginx:alpine AS runtime
-  WORKDIR /usr/share/nginx/html
-  COPY --from=build /app/build .
+    # Build stage
+    FROM node:21-alpine AS build
+    WORKDIR /app
+    COPY package*.json ./
+    RUN npm install
+    COPY . .
+    RUN npm run build
+    
+    # Runtime stage
+    FROM nginx:alpine AS runtime
+    WORKDIR /usr/share/nginx/html
+    COPY --from=build /app/build .
 ```
 
 #### Step 3: Build the Docker Image for Front-End
@@ -201,7 +225,7 @@ With your Dockerfile in place, let’s go ahead and build the Docker image. Run 
 
 #### Step 4: Run the Front-End Container
 
-Once the image is built, you can run the container and expose the Nginx web server to your local machine’s port 8080.
+Once the image is built, you can run the container and expose the Nginx web server to your local machine’s port 3000.
 
 ```bash
   docker run -d -p 8000:80 --name opendevops-nyctaxiweb-frontend-dev opendevops-nyctaxiweb-frontend:v1.0.0
@@ -209,25 +233,19 @@ Once the image is built, you can run the container and expose the Nginx web serv
 
 > **Why Map Ports?**
 > 
-> Inside the container, your React app is being served by Nginx on port 80 — but port 80 inside a container is not automatically accessible from your computer. By mapping it to port 8080 on your host machine, you’re saying:
+> Inside the container, your React app is being served by Nginx on port 80 — but port 80 inside a container is not automatically accessible from your computer. By mapping it to port 8000 on your host machine, you’re saying:
 > 
 > "Hey Docker, whenever something tries to access my local machine at `localhost:8000`, forward that traffic to port 80 inside the container."
 > 
 > The `-p 8000:80` flag is telling Docker how to connect the container’s internal network to your local machine.
 > 
-> - The number after the colon (80) is the port inside the container — that’s where Nginx (the web server) is listening by default.
+> - The number after the colon (8000) is the port inside the container — that’s where Nginx (the web server) is listening by default.
 > 
-> - The number before the colon (8000) is the port on your local machine (host) — this is where you’ll access the app in your browser.
+> - The number before the colon (80) is the port on your local machine (host) — this is where you’ll access the app in your browser.
 
-Now visit [http://localhost:8000](http://localhost:8080) and you should see your React app up and running in the container.
+Now visit [http://localhost:8000](http://localhost:8000) and you should see your React app up and running in the container.
 
-#### Step 5: Stop the Front-End Container
 
-If everything looks good, let’s clean up by stopping the test container:
-
-```bash
-  docker stop opendevops-nyctaxiweb-frontend-dev
-```
 
 ### 2. Containerizing the Back-End (Node.js)
 
@@ -284,13 +302,13 @@ This Dockerfile contains a **single-stage build**, as the back-end does not need
 #### Complete Dockerfile for Front-End
 
 ```dockerfile
-  FROM node:21-alpine
-  WORKDIR /app
-  COPY package*.json ./
-  RUN npm install
-  COPY . .
-  
-  CMD ["node", "app.js"]
+    FROM node:21-alpine
+    WORKDIR /app
+    COPY package*.json ./
+    RUN npm install
+    COPY . .
+    
+    CMD ["node", "app.js"]
 ```
 
 #### Step 3: Build the Docker Image for Back-End
@@ -315,11 +333,15 @@ Once built, let’s run your container. If your Node.js server listens on port `
 >  
 > The `-p 3000:3000` flag means: “take requests from port 3000 on my laptop, and forward them to port 3000 inside the container where Node is running.”
 
-Now visit [http://localhost:3000](http://localhost:3000) — and you should see your server responses just as if it were running natively on your machine.
+Now visit the front_end [http://localhost:8000](http://localhost:8000) — and you should see your server responses just as if it were running natively on your machine.
 
-#### Step 5: Stop the Back-End Container
+#### Step 5: Stop the Front-End and Back-End Container
 
 If everything looks good, let’s clean up by stopping the test container:
+
+```bash
+  docker stop opendevops-nyctaxiweb-frontend-dev
+```
 
 ```bash
   docker stop opendevops-nyctaxiweb-backend-dev
@@ -334,7 +356,7 @@ Now that you've successfully created Dockerfiles for both the front-end and back
 First, navigate back to the root directory of your forked project (where both `front_end/` and `back_end/` directories reside). Then, stage the newly created Dockerfiles:
 
 ```bash
-  cd topic-2-lab-reference-app
+  cd topic-2-lab-reference-app-azure
   
   git add front_end/Dockerfile
   git add back_end/Dockerfile
@@ -345,7 +367,7 @@ First, navigate back to the root directory of your forked project (where both `f
 Now that your Dockerfiles are staged, commit them with a clear message:
 
 ```bash
-  git commit -m "Add Dockerfiles for React front-end and Node.js back-end"`
+  git commit -m "Add Dockerfiles for React front-end and Node.js back-end"
 ```
 
 #### Step 3: Push to Your GitHub Repository
@@ -364,7 +386,6 @@ Finally, push your committed changes to your forked repository on GitHub:
 
 ## Accessing the Corporate Network via VPN
 
-### 1. VPN Configuration and Connection
 
 Ask the lab administrator for the `public ip` of the internal network, and download the VPN configuration file from `https://{public_ip}`.
 
@@ -376,13 +397,6 @@ Import the VPN configuration file into the Wireguard Client to establish the VPN
 ![wireguard dashboard](./assets/wireguard-dashboard.png)
 
 ![wireguard activate](./assets/wireguard-activate.png)
-
-### 2. Navigate to the Dashboard
-
-With the VPN connection activated, access `http://dashboard.internal` on your browser. This internal service dashboard is your gateway to various corporate resources.
-
-![token generation](./assets/token-generate-page.png)
-
 
 
 
@@ -396,9 +410,9 @@ In this section, we will transit from these manual workflows, and aim to streaml
 **It's important to note that CI/CD pipelines in real-world scenarios involve more complexity and other CI/CD tools might use different syntax for defining pipelines.** However, understanding this basic structure will equip you with the fundamental knowledge required to grasp more complex workflows in the industry.
 
 ### 1. Accessing Jenkins
-Once you're connected to the VPN, navigate to `http://jenkins.internal` in your browser to access the Jenkins dashboard. Ask the lab administrator for the credentials for jenkins.
+Once you're connected to the VPN, navigate to `http://jenkins.internal` in your browser to access the Jenkins dashboard. Ask the lab administrator for your username and password for jenkins.
 
-![jenkins-login.png](assets/jenkins-login.png)
+![jenkins-login](./assets/jenkins-login.png)
 
 
 ### 2. Creating a Pipeline in Jenkins
@@ -411,13 +425,18 @@ In the General section, choose "GitHub project" and enter the GitHub repository 
 
   - If you haven't already from the previous sections, fork the reference application repository and enter the forked repo URL.
 
+In the Triggers section, choose "GitHub hook trigger for GITScm polling" to enable automatic builds whenever changes are pushed to the GitHub repository.
+
+
 In the Pipeline section, choose "Pipeline script from SCM" for the Definition.
 
   - Select "Git" as the SCM.
   - Enter the repository URL of your forked version of the reference application.
-  - Change Branch Specifier from `*/master` to `*/main`.
+  - Change Branch Specifier from `*/master` to `*/main` (or whichever branch you are working on).
 
 Click `apply` and `save`.
+
+
 
 ### 3. Setting Up Webhooks
 
@@ -426,30 +445,13 @@ Webhooks allow GitHub to notify Jenkins about code changes, triggering the pipel
 **Configure Webhooks:**
 
   - Go to your forked repository on GitHub, navigate to "Settings" > "Webhooks" > "Add webhook."
-  - Enter the URL provided on the `http://dashboard.internal` page into the Payload URL in GitHub Webhooks creation page.
+  - Enter the URL `http://{public-ip}/github-webhook/` into the Payload URL in GitHub Webhooks creation page.
   - Select `application/json` as the Content Type.
   - Save your webhook. This setup ensures Jenkins is notified on every code push, automating the build process.
 
-### 4. Add Jenkins Credentials
-
-To securely access your container registry, store the credentials in Jenkins:
-
-1. Open Jenkins Dashboard.
-2. Go to Manage Jenkins > Credentials > (select your scope, e.g., Global).
-3. Click “Add Credentials”.
-4. Select “Username with password” as the credential type.
-5. Fill in the following:
-   - ID: `jenkins-acr-scope-map-cred` (Make sure this ID matches what you use in your pipeline script)
-   - Username: your registry username (e.g., Azure Service Principal or Docker ID)
-   - Password: your registry password or client secret
-6. Click Save.
-
-These credentials will be securely accessed in later stages using withCredentials.
-
-# TODO ADD SCREENSHOT OF CREDENTIALS 
 
 
-### 5. Creating the Jenkinsfile
+### 4. Creating the Jenkinsfile
 
 We're now going to create a Jenkinsfile.
 
@@ -464,9 +466,9 @@ Jenkinsfiles typically use a declarative syntax that outlines the pipeline in se
 All declarative pipelines are enclosed within a pipeline block. `agent` specifies where this pipeline will be executed. Let's keep this simple and tell Jenkins that it can use any available agent to run the pipeline.
 
 ```groovy
-pipeline {
-    agent any
-}
+    pipeline {
+        agent any
+    }
 ```
 
 
@@ -476,7 +478,7 @@ We will predefine some environment variables to make our pipeline cleaner and ea
 
 ```groovy
 environment {
-    AZURE_ACR_NAME = 'labacrdevops'
+    AZURE_ACR_NAME = 'labacrdevops2025' # REPLACE YOUR LAB'S ACR NAME HERE
     IMAGE_NAME_FRONTEND = 'opendevops-nyctaxiweb-frontend:v1.0.0'
     IMAGE_NAME_BACKEND = 'opendevops-nyctaxiweb-backend:v1.0.0'
     ACR_LOGIN_SERVER = "${AZURE_ACR_NAME}.azurecr.io"
@@ -589,7 +591,7 @@ stage('Deploy') {
         sh 'docker rm -f backend || echo "No backend container to remove"'
         
         // Check what's using our ports
-        sh 'netstat -tuln | grep 8000 || echo "Port 8080 is free"'
+        sh 'netstat -tuln | grep 8000 || echo "Port 8000 is free"'
         sh 'netstat -tuln | grep 3000 || echo "Port 3000 is free"'
         
         // Run with less common ports
@@ -611,7 +613,7 @@ pipeline {
     agent any
 
     environment {
-        AZURE_ACR_NAME = 'labacrdevops'
+        AZURE_ACR_NAME = 'labacrdevops2025' # REPLACE YOUR LAB'S ACR NAME HERE
         IMAGE_NAME_FRONTEND = 'opendevops-nyctaxiweb-frontend:v1.0.0'
         IMAGE_NAME_BACKEND = 'opendevops-nyctaxiweb-backend:v1.0.0'
         ACR_LOGIN_SERVER = "${AZURE_ACR_NAME}.azurecr.io"
@@ -674,7 +676,7 @@ pipeline {
                 sh 'docker rm -f backend || echo "No backend container to remove"'
                 
                 // Check what's using our ports
-                sh 'netstat -tuln | grep 8000 || echo "Port 8080 is free"'
+                sh 'netstat -tuln | grep 8000 || echo "Port 8000 is free"'
                 sh 'netstat -tuln | grep 3000 || echo "Port 3000 is free"'
                 
                 // Run with less common ports
@@ -689,7 +691,10 @@ pipeline {
 }
 ```
 
-### 6. Seeing the CI/CD pipeline in Action
+![successful pipeline](./assets/successful-pipeline.png)
+
+
+### 5. Seeing the CI/CD pipeline in Action
 
 After creating the Jenkinsfile, it's time to see the CI/CD pipeline in action!
 
@@ -701,7 +706,7 @@ After creating the Jenkinsfile, it's time to see the CI/CD pipeline in action!
 Once the pipeline completes, view you application at the following url!
 
 ```
-http://{public_ip}:{host_port}
+  http://{public_ip}:{host_port}
 ```
 
 Replace `{public_ip}` with the public IP address, and `{host_port}` with the specific port number you've chosen during the deployment stage in the Jenkinsfile.

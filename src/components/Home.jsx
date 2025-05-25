@@ -196,8 +196,9 @@ const Home = ({onNavigateToOverview}) => {
                         <div style={{display: 'flex', alignItems: 'flex-start', gap: '1rem'}}>
                             <img src="/public/img/wiclogo2.png" alt="WIC Logo 2" style={{width: '80px'}}/>
                             <p style={{fontSize: '1rem', lineHeight: '1.6', color: '#333'}}>
-                                Become DevSecOps Professional: Trained, Employed, and Paying It Forward—Literally. Apply
-                                Today!
+                                Become DevSecOps Professional: Trained, Employed, and Paying It Forward—Literally.
+                                <a href="https://womenincloud.com/devsecops/" target="_blank" rel="noopener noreferrer"
+                                   style={{color: '#4B2E83', textDecoration: 'underline'}}> Apply Today!</a>
                             </p>
                         </div>
                     </div>
@@ -216,7 +217,12 @@ const Home = ({onNavigateToOverview}) => {
                         <ul style={{paddingLeft: '1.2rem', color: '#333', fontSize: '1rem', lineHeight: '1.6'}}>
                             <li>Watch “How It Works” On YouTube</li>
                             <li>LinkedIn Article: DevSecOps: The $23 Billion Opportunity You Can’t Afford to Miss</li>
-                            <li>Digital Network – Get Connected</li>
+                            <li>
+                                <a href="https://women-incloud-network.mn.co/spaces/14493304/chat" target="_blank"
+                                   rel="noopener noreferrer" style={{color: '#4B2E83', textDecoration: 'underline'}}>
+                                    Digital Network – Get Connected
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
@@ -232,13 +238,28 @@ const Home = ({onNavigateToOverview}) => {
                         }}>Technical Resources
                         </div>
                         <ul style={{paddingLeft: '1.2rem', color: '#333', fontSize: '1rem', lineHeight: '1.6'}}>
-                            <li>GITHUB</li>
-                            <li>ReactApp</li>
+                            <li>
+                                <a href="https://github.com/" target="_blank" rel="noopener noreferrer"
+                                   style={{color: '#4B2E83', textDecoration: 'underline'}}>
+                                    GitHub
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener noreferrer"
+                                   style={{color: '#4B2E83', textDecoration: 'underline'}}>
+                                    OWASP Top 10 Web App Security Risks
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://react.dev/" target="_blank" rel="noopener noreferrer"
+                                   style={{color: '#4B2E83', textDecoration: 'underline'}}>
+                                    React
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-
 
 
             {/* Project Documentation Link */}
@@ -289,11 +310,11 @@ const Home = ({onNavigateToOverview}) => {
                 }}>
                     {[
                         {
-                            title: 'WIC Team',
-                            members: ['Chaitra Vedullapalli', 'Andrea Herrera']
+                            title: 'Women in Cloud Team',
+                            members: ['Chaitra Vedullapalli', 'Andrea Herrera', 'Chelsea Bland']
                         },
                         {
-                            title: 'Boeing WIC Team',
+                            title: 'Boeing WiC Team',
                             members: ['Geetha Sitaraman', 'Jared Kunz', 'Uzma Khan', 'Jennifer R. Davis']
                         },
                         {
@@ -374,7 +395,7 @@ const Home = ({onNavigateToOverview}) => {
                                         href="https://open-devsecops.github.io/"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        style={{ textDecoration: 'underline', color: '#2B6CB0' }}
+                                        style={{ textDecoration: 'underline', color: '#4B2E83' }}
                                     >
                                         View their DevOps & DevSecOps tutorial on Amazon AWS
                                     </a>
