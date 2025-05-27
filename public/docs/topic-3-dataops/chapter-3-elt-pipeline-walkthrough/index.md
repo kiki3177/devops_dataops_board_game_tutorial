@@ -13,7 +13,7 @@
 
 ## Prerequisites
 
-You need to have an Azure account. You can sign up using the [[Azure Free Tier]](https://azure.microsoft.com/en-us/free/), which includes \$200 in free credits and 12 months of free services.
+You need to have an Azure account. You can sign up using the [[Azure Free Tier]](https://azure.microsoft.com/en-us/free/), for which you will receive $200 credits for 30 days. Then upgrade to Pay-As-You-Go(PAYG) mode. The PAYG is required for this lab to work. 
 
 Log in to the [[Azure Portal]{.underline}](https://portal.azure.com)
 

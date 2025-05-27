@@ -216,7 +216,13 @@ const Home = ({onNavigateToOverview}) => {
                         }}>Help Resources
                         </div>
                         <ul style={{paddingLeft: '1.2rem', color: '#333', fontSize: '1rem', lineHeight: '1.6'}}>
-                            <li>Watch “How It Works” On YouTube</li>
+                            <li>
+                                <div>Watch How-It-Works Videos On</div>
+                                <a href="https://www.youtube.com/@opendevsecops" target="_blank"
+                                   rel="noopener noreferrer" style={{color: '#4B2E83', textDecoration: 'underline'}}>
+                                    Opendevsecops YouTube Channel
+                                </a>
+                            </li>
                             <li>LinkedIn Article: DevSecOps: The $23 Billion Opportunity You Can’t Afford to Miss</li>
                             <li>
                                 <a href="https://women-incloud-network.mn.co/spaces/14493304/chat" target="_blank"

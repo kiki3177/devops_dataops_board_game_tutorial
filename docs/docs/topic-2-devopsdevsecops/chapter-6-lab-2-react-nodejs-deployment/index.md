@@ -299,7 +299,7 @@ This Dockerfile contains a **single-stage build**, as the back-end does not need
   CMD ["node", "app.js"]
 ```
 
-#### Complete Dockerfile for Front-End
+#### Complete Dockerfile for Back-End
 
 ```dockerfile
     FROM node:21-alpine

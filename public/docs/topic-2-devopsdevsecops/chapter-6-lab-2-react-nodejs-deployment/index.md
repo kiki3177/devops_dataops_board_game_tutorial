@@ -4,7 +4,11 @@
 
 ## Introduction
 
-THIS IS AN INTRODUCTION
+This hands-on lab guides you through the complete process of deploying a React + Node.js project using containerization and continuous integration/continuous deployment (CI/CD) practices.
+
+You’ll begin by running the application locally, then learn how to containerize both the front-end and back-end using Docker. After that, you’ll set up a full CI/CD pipeline using Jenkins and Azure Container Registry (ACR), enabling you to automate the entire build and deployment process. By the end, you’ll also complete a collaborative "buddy activity" that mimics a real-world team environment—deploying a peer’s Docker images using your own pipeline configuration.
+
+This lab is perfect for students and professionals looking to gain practical experience in DevOps, containerization, and automation tools that are widely used across the industry.
 
 
 <hr>
@@ -50,7 +54,7 @@ Below are the skills and knowledge expected to successfully complete the lab exe
 
 - Basic command-line operations: You are comfortable navigating and executing commands in a terminal.
 - Basic Git operations: cloning, forking, committing, pushing.
-- Basic React knowledge: You understand how to run a React application locally
+- Basic React knowledge: You understand how to run a React application locally.
 
 <hr>
 
@@ -245,6 +249,9 @@ Once the image is built, you can run the container and expose the Nginx web serv
 
 Now visit [http://localhost:8000](http://localhost:8000) and you should see your React app up and running in the container.
 
+> <span style="color:red"><strong>Note:</strong></span> <span style="color:red">In this tutorial, we use <strong>8000:80</strong> for the frontend and <strong>3000:30000</strong> for the backend container port mapping. 
+> We also use <strong>opendevops-nyctaxiweb-frontend:v1.0.0</strong> as the frontend image name and <strong>opendevops-nyctaxiweb-backend:v1.0.0</strong> as the backend image name.
+> In practice, please confirm with your lab administrator or team to ensure these ports are not already in use or causing conflicts on shared environments.</span>
 
 
 ### 2. Containerizing the Back-End (Node.js)
@@ -299,7 +306,7 @@ This Dockerfile contains a **single-stage build**, as the back-end does not need
   CMD ["node", "app.js"]
 ```
 
-#### Complete Dockerfile for Front-End
+#### Complete Dockerfile for Back-End
 
 ```dockerfile
     FROM node:21-alpine
@@ -478,7 +485,7 @@ We will predefine some environment variables to make our pipeline cleaner and ea
 
 ```groovy
 environment {
-    AZURE_ACR_NAME = 'labacrdevops2025' # REPLACE YOUR LAB'S ACR NAME HERE
+    AZURE_ACR_NAME = 'labacrdevops2025' // REPLACE YOUR LAB'S ACR NAME HERE
     IMAGE_NAME_FRONTEND = 'opendevops-nyctaxiweb-frontend:v1.0.0'
     IMAGE_NAME_BACKEND = 'opendevops-nyctaxiweb-backend:v1.0.0'
     ACR_LOGIN_SERVER = "${AZURE_ACR_NAME}.azurecr.io"
@@ -613,7 +620,7 @@ pipeline {
     agent any
 
     environment {
-        AZURE_ACR_NAME = 'labacrdevops2025' # REPLACE YOUR LAB'S ACR NAME HERE
+        AZURE_ACR_NAME = 'labacrdevops2025' // REPLACE YOUR LAB'S ACR NAME HERE
         IMAGE_NAME_FRONTEND = 'opendevops-nyctaxiweb-frontend:v1.0.0'
         IMAGE_NAME_BACKEND = 'opendevops-nyctaxiweb-backend:v1.0.0'
         ACR_LOGIN_SERVER = "${AZURE_ACR_NAME}.azurecr.io"
@@ -716,3 +723,123 @@ Replace `{public_ip}` with the public IP address, and `{host_port}` with the spe
 
 
 
+### 6. Bonus: Buddy Activity
+
+This final bonus section simulates a real-world collaboration scenario. Imagine you're joining a team where a peer has already pushed their front-end and back-end Docker images to a shared Azure Container Registry (ACR). You want to retrieve and deploy those images for testing — but with your own custom container names and updated pipeline.
+
+Let’s walk through how to accomplish that.
+
+> You know that your buddy has pushed the following images to the same shared ACR:
+>
+> Front-End Image: opendevops-nyctaxiweb-optional-frontend:v1.0.0
+>
+> Back-End Image: opendevops-nyctaxiweb-optional-backend:v1.0.0
+
+
+#### Step 1: Create a New GitHub Repository
+
+Create a new GitHub repository under your own account to host this new Jenkins pipeline and Jenkinsfile.
+
+#### Step 2: Set Up Webhook & Jenkins Pipeline
+
+Just like you did before, go to your new GitHub repo’s Settings > Webhooks > Add Webhook. Then go to http://jenkins.internal, create a New Item (Jenkins pipeline), use Pipeline script from SCM, point it to your new repo, and change the branch specifier to */main.
+
+#### Step 3: Create and Push the Jenkinsfile
+
+Below is the Jenkinsfile you will commit and push to your new repo:
+
+
+```groovy
+pipeline {
+    agent any
+
+    environment {
+        AZURE_ACR_NAME = 'labacrdevops2025'
+        ACR_LOGIN_SERVER = "${AZURE_ACR_NAME}.azurecr.io"
+
+        // Original names (from peer)
+        ORIGINAL_IMAGE_FRONTEND = "${ACR_LOGIN_SERVER}/opendevops-nyctaxiweb-optional-frontend:v1.0.0"
+        ORIGINAL_IMAGE_BACKEND  = "${ACR_LOGIN_SERVER}/opendevops-nyctaxiweb-optional-backend:v1.0.0"
+
+        // Local retagged names (optional)
+        LOCAL_IMAGE_FRONTEND = "my-custom-frontend:latest"
+        LOCAL_IMAGE_BACKEND  = "my-custom-backend:latest"
+
+        // Container names (change freely)
+        CONTAINER_FRONTEND = "frontend-renamed"
+        CONTAINER_BACKEND  = "backend-renamed"
+    }
+
+    stages {
+        stage('Login to ACR') {
+            steps {
+                script {
+                    withCredentials([
+                        usernamePassword(
+                            credentialsId: 'jenkins-acr-scope-map-cred',
+                            usernameVariable: 'ACR_USER',
+                            passwordVariable: 'ACR_PASS'
+                        )
+                    ]) {
+                        sh """
+                            echo "Logging in to ACR..."
+                            docker login ${ACR_LOGIN_SERVER} -u \$ACR_USER -p \$ACR_PASS
+                        """
+                    }
+                }
+            }
+        }
+
+        stage('Pull & Retag Images') {
+            steps {
+                sh """
+                    echo "Pulling images from ACR..."
+                    docker pull ${ORIGINAL_IMAGE_FRONTEND}
+                    docker pull ${ORIGINAL_IMAGE_BACKEND}
+
+                    echo "Retagging images locally..."
+                    docker tag ${ORIGINAL_IMAGE_FRONTEND} ${LOCAL_IMAGE_FRONTEND}
+                    docker tag ${ORIGINAL_IMAGE_BACKEND} ${LOCAL_IMAGE_BACKEND}
+                """
+            }
+        }
+
+        stage('Stop & Remove Old Containers') {
+            steps {
+                sh """
+                    docker stop ${CONTAINER_FRONTEND} || echo "No existing frontend"
+                    docker rm ${CONTAINER_FRONTEND} || echo "No frontend to remove"
+
+                    docker stop ${CONTAINER_BACKEND} || echo "No existing backend"
+                    docker rm ${CONTAINER_BACKEND} || echo "No backend to remove"
+                """
+            }
+        }
+
+        stage('Deploy New Containers') {
+            steps {
+                sh """
+                    echo "Running containers..."
+                    docker run -d --name ${CONTAINER_FRONTEND} -p 7000:80 ${LOCAL_IMAGE_FRONTEND}
+                    docker run -d --name ${CONTAINER_BACKEND} -p 2000:3000 ${LOCAL_IMAGE_BACKEND}
+
+                    echo "Currently running containers:"
+                    docker ps
+                """
+            }
+        }
+    }
+}
+
+```
+
+
+Commit and push this Jenkinsfile to your new repository:
+
+```bash
+  git add Jenkinsfile
+  git commit -m "Buddy activity: pull & deploy peer images with custom names"
+  git push origin main
+```
+
+**Let your buddy know it works — and maybe share your own image tags so they can try it the other way around!**

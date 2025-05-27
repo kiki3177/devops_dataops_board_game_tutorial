@@ -24,23 +24,25 @@ Answer the following five multiple-choice questions. Each question has four choi
    - C) Excessive use of version control
    - D) Low team morale
 
-4. **Question**
-   - A)
-   - B)
-   - C)
-   - D)
+4. **In the context of CI/CD, what is the main purpose of Continuous Integration (CI)?**
+   - A) To automatically deploy code to production
+   - B) To merge code into the main branch and run automated tests frequently
+   - C) To monitor application performance in real time
+   - D) To provision infrastructure for deployment
 
-5. **Question**
-   - A)
-   - B)
-   - C)
-   - D)
+5. **Which Jenkins feature allows you to define the steps of a CI/CD pipeline as code?**
+   - A) Jenkins Shell Executor
+   - B) Build Monitor Plugin
+   - C) Jenkinsfile
+   - D) Code Builder Wizard
+
+
 
 <details>
    <Summary>Answer Key</Summary>
    1. A <br>
    2. C <br>
    3. A <br>
-   4.   <br>
-   5.   <br>
+   4. B <br>
+   5. C <br>
 </details>
